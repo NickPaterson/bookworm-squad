@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // Components
 import BookDetails from "../components/BookDetails";
+import BookForm from "../components/BookForm";
 
 const Home = () => {
     const [books, setBooks] = useState(null);
@@ -28,6 +29,7 @@ const Home = () => {
                         />
                     ))}
                 </div>
+                <BookForm />
             </div>
         );
  };
