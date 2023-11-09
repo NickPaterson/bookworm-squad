@@ -26,7 +26,7 @@ export function NavbarWithSearch() {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Home
         </a>
       </Typography>
@@ -37,7 +37,7 @@ export function NavbarWithSearch() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
         
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           About Us
         </a>
       </Typography>
@@ -48,7 +48,7 @@ export function NavbarWithSearch() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
         
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Reviews
         </a>
       </Typography>
@@ -59,7 +59,7 @@ export function NavbarWithSearch() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
        
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Blog
         </a>
       </Typography>
@@ -70,7 +70,7 @@ export function NavbarWithSearch() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
        
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Contact Us
         </a>
       </Typography>
