@@ -124,12 +124,16 @@ export function NavbarWithSearch() {
             </div>
           </div>
          
-          <Button size="md" color="lightBlue" className="rounded-lg ">
+          <a href="/login">
+            <Button size="md" color="lightBlue" className="rounded-lg ">
             Sign In
-          </Button>
-          <Button size="md" color="lightBlue" className="rounded-lg ">
-            Join
-          </Button>
+            </Button>
+          </a>
+          <a href="/register">
+            <Button size="md" color="lightBlue" className="rounded-lg ">
+              Join
+            </Button>
+          </a>
         </div>
         <IconButton
           variant="text"
