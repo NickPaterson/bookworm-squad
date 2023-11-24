@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const BookDetails = ({ book }) => {
  const imgSrc = `https://covers.openlibrary.org/b/isbn/${book.isbn_10}-M.jpg`;
