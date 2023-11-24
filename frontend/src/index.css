@@ -9,7 +9,7 @@
   /* --primary: #1aac83; */
   --primary: #FFCD29;
   --primary-complement: #2946FF;
-  --error: #e7195a;
+  --error: #d7343c;
 }
 * {
   box-sizing: border-box;
@@ -25,11 +25,15 @@ body {
   justify-content: center;
   align-items: center;
   padding: 2rem 0;
-  height: 300px;
+  min-height: 100px;
   max-width: 1140px;
   margin: 0 auto;
 }
 
 .home-card-container img {
   max-height: 460px;
+}
+
+.error-bg {
+  background-color: var(--error);
 }

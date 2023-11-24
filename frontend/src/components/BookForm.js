@@ -1,76 +1,140 @@
 import { useState } from 'react';
+import { useBooksContext } from '../hooks/useBooksContext';
+import {
+  Card,
+  Input,
+  Button,
+  Typography,
+  Textarea,
+} from "@material-tailwind/react";
+
 
 const BookForm = () => {
-  const [isbn_10, setIsbn_10] = useState('');
-  const [title, setTitle] = useState('');
-  const [authors, setAuthors] = useState([]);
-  const [publish_date, setPublish_date] = useState('');
-  const [first_sentence, setFirst_sentence] = useState('');
-  const [error, setError] = useState(null);
+    const { dispatch } = useBooksContext();
+    const [title, setTitle] = useState('')
+    const [isbn_10, setIsbn_10] = useState('')
+    const [authors, setAuthors] = useState('')
+    const [publish_date, setPublish_date] = useState('')
+    const [review, setReview] = useState('')
+    const [error, setError] = useState(null)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        const book = { title, isbn_10, authors, publish_date, review };
 
-    // Fetch book data from Open Library API
-    try {
-      const openLibraryURL = `https://openlibrary.org/isbn/${isbn_10}.json`;
-      const response = await fetch(openLibraryURL);
+        const response = await fetch('/api/books', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(book)
+        })
 
-      if (response.status === 200) {
-        const data = await response.json();
-        setTitle(data.title);
-        setAuthors(['test']);
-        setPublish_date(data.publish_date);
-        setFirst_sentence(data.first_sentence);
-        setError(null);
+        const json = await response.json()
 
-        // Post book data to the API endpoint
-        const bookData = {
-          isbn_10,
-          title,
-          authors,
-          publish_date,
-          first_sentence,
-        };
-
-        console.log(bookData);
-
-        const postResponse = await fetch('/api/books', {
-          method: 'POST',
-          body: JSON.stringify(bookData),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (postResponse.status === 201) {
-          // Book successfully added
-          // You can handle this as needed
+        if (!response.ok) {
+          setError(json.error)  
         } else {
-          // Handle post request error
-          setError('Failed to add the book to your API.');
-        }
-      } else {
-        setError('Failed to fetch data from Open Library');
-      }
-    } catch (error) {
-      setError('An error occurred: ' + error.message);
+          setTitle('')
+          setIsbn_10('')
+          setAuthors('')
+          setPublish_date('')
+          setReview('')
+          setError(null)
+          console.log("Book form submitted");
+          dispatch({ type: 'CREATE_BOOK_REVIEW', payload: json })
+        } 
     }
-  };
 
-  return (
-    <form className='add-book-form' onSubmit={handleSubmit}>
-      <h2>Add a Book</h2>
-      <label htmlFor='isbn_10'>ISBN-10:</label>
-      <input
-        type='text'
-        value={isbn_10}
-        onChange={(e) => setIsbn_10(e.target.value)}
-      />
-      <button type='submit'>Add Book</button>
-      {error && <div className='error'>{error}</div>}
-    </form>
-  );
-};
 
-export default BookForm;
+    return (
+      <Card color="transparent" shadow={false}>
+      <Typography variant="h4" color="blue-gray">
+          Add a Book Review
+      </Typography>
+      <Typography color="gray" className="mt-1 font-normal">
+          Enter the details of the book you want to review.
+      </Typography>
+      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 create" onSubmit={handleSubmit}>
+          <div className="mb-1 flex flex-col gap-6">
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                  Title
+              </Typography>
+              <Input
+                  size="lg"
+                  placeholder="Title"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  labelProps={{
+                      className: "before:content-none after:content-none",
+                  }}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+              />
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                  ISBN-10
+              </Typography>
+              <Input
+                  type="text"
+                  size="lg"
+                  placeholder="ISBN-10"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  labelProps={{
+                      className: "before:content-none after:content-none",
+                  }}
+                  value={isbn_10}
+                  onChange={(e) => setIsbn_10(e.target.value)}
+              />
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                  Authors
+              </Typography>
+                <Input
+                  type="text"
+                  size="lg"
+                  placeholder="Authors"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  labelProps={{
+                    className: "before:content-none after:content-none",
+                  }}
+                  value={authors}
+                  onChange={(e) => setAuthors(e.target.value.split(', '))}
+                />
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                  Publish Date
+              </Typography>
+              <Input
+                  type="date"
+                  size="lg"
+                  placeholder="Publish Date"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  labelProps={{
+                      className: "before:content-none after:content-none",
+                  }}
+                  value={publish_date}
+                  onChange={(e) => setPublish_date(e.target.value)}
+              />
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                  Review
+              </Typography>
+              <Textarea
+                  size="lg"
+                  placeholder="Review"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  labelProps={{
+                      className: "before:content-none after:content-none",
+                  }}
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+              />
+
+          </div>
+          {error && <p className="text-red-500">{error}</p>}
+          <Button className="mt-6" fullWidth type="submit">
+              Add Review
+          </Button>
+      </form>
+      </Card>
+    )
+}
+
+export default BookForm

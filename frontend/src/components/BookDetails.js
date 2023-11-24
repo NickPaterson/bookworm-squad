@@ -13,7 +13,8 @@ const BookDetails = ({ book }) => {
         <p>ISBN-10: {book.isbn_10}</p>
         <p>Authors: {book.authors}</p>
         <p>Published: {book.publish_date}</p>
-        <p>First Sentence: {book.first_sentence}</p>
+        <p>Review: {book.review}</p>
+        
     </div>
   );
 };

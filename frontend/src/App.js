@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register'; 
 import Login from './pages/Login';
+import Books from './pages/Books';
+import AddBook from './pages/AddBook';
+
 import { NavbarWithSearch } from './components/NavbarWithSearch';
 
 function App() {
@@ -25,6 +28,16 @@ function App() {
             <Route
               path="/login"
               element={<Login />}
+            />
+
+            <Route
+              path="/books"
+              element={<Books />}
+            />
+
+            <Route
+              path="/add-book-review"
+              element={<AddBook />}
             />
 
           </Routes>
