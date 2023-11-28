@@ -1,6 +1,6 @@
 // Module dependencies.
 
-const app = require('../backend/server');
+const app = require('../../backend/server');
 const debug = require('debug')('backend:server');
 const http = require('http');
 
