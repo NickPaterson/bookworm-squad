@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Books from './pages/Books';
 import AddBook from './pages/AddBook';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 
 import { NavbarWithSearch } from './components/NavbarWithSearch';
 
@@ -38,6 +40,16 @@ function App() {
             <Route
               path="/add-book-review"
               element={<AddBook />}
+            />
+
+            <Route
+              path="/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
+
+            <Route 
+              path="/terms-and-conditions"
+              element={<Terms />}
             />
 
           </Routes>
