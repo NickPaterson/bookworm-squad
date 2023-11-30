@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/91875135-e69e-475f-a09b-53f0362c2706/resourceGroups/bookworm/providers/Microsoft.Web/sites/bw-frontend",
+    "appService.deploySubpath": "."
+}

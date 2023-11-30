@@ -13,7 +13,8 @@ import {
     const { dispatch } = useBooksContext();
 
     const { isbn_10, alt, title, review } = book;
-    const src = `https://covers.openlibrary.org/b/isbn/${isbn_10}-L.jpg`;
+  
+    const src = `https://covers.openlibrary.org/b/isbn/${isbn_10}-M.jpg`;
 
     const handleDelete = async () => {
       const response = await fetch(`/api/books/${book._id}`, {
