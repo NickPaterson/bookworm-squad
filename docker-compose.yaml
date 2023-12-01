@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  bookwormbackend:
+    build: ./backend
+    image: bookwormarc.azurecr.io/oss/bitnami/redis:6.0.8
+    container_name: backendcontainer
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - bookwormnetwork
+
+  bookwormfrontend:
+    build: ./frontend
+    image: bookwormarc.azurecr.io/azuredocs/frontend:v1
+    container_name: frontendcontainer
+    environment:
+      REDIS: bookworm-backend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - bookwormbackend
+    networks:
+      - bookwormnetwork
+
+networks:
+  bookwormnetwork:
+    driver: bridge
+
+    

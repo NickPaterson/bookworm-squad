@@ -9,7 +9,7 @@ const Books = () => {
 
     useEffect(() => {
             const fetchBooks = async () => {
-                const res = await fetch('/api/books');
+                const res = await fetch('http://localhost:4000/api/books/');
                 const json = await res.json();
 
                 if (res.ok) {
