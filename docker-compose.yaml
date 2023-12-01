@@ -11,8 +11,6 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
-    depends_on:
-      - database
     networks:
       - bookwormnetwork
 
@@ -28,14 +26,6 @@ services:
     tty: true
     depends_on:
       - bookwormbackend
-    networks:
-      - bookwormnetwork
-
-  database:
-    image: mongo
-    container_name: mongodb
-    ports:
-      - "27017:27017"
     networks:
       - bookwormnetwork
 
