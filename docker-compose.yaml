@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  bookworm-backend:
+  bookwormbackend:
     build: ./backend
     image: bookwormarc.azurecr.io/oss/bitnami/redis:6.0.8
     container_name: backendcontainer
@@ -11,8 +11,12 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+    depends_on:
+      - database
+    networks:
+      - bookwormnetwork
 
-  bookworm-frontend:
+  bookwormfrontend:
     build: ./frontend
     image: bookwormarc.azurecr.io/azuredocs/frontend:v1
     container_name: frontendcontainer
@@ -22,3 +26,21 @@ services:
       - "3000:3000"
     stdin_open: true
     tty: true
+    depends_on:
+      - bookwormbackend
+    networks:
+      - bookwormnetwork
+
+  database:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - bookwormnetwork
+
+networks:
+  bookwormnetwork:
+    driver: bridge
+
+    
