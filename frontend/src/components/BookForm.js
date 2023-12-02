@@ -23,7 +23,7 @@ const BookForm = () => {
         
         const book = { title, isbn_10, authors, publish_date, review };
 
-        const response = await fetch('http://localhost:4000/api/books', {
+        const response = await fetch('https://bookwormbackend-nickpaterson.cloud.okteto.net/api/books/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
