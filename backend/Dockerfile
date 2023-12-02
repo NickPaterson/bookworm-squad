@@ -1,5 +1,9 @@
 FROM node:17-alpine
 
+RUN npm install -g nodemon
+
+RUN npm install -g serve 
+
 WORKDIR /app
 
 COPY package*.json .
@@ -8,9 +12,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm install -g serve 
+EXPOSE 4000
 
-EXPOSE 3000
-# required for docker desktop port mapping
-
-CMD ["serve", "-s", "build"]
+CMD ["npm", "run", "dev"]
