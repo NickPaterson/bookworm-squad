@@ -39,7 +39,7 @@ app.get("*", (req, res) => {
 
 // Connect to MongoDB
 // $MONGODB_URI okteto environment variable
-mongoose.connect(mongodb+srv://npgb:vGb0OBcA7BZ5P7ox@bookworm.ignoyto.mongodb.net/?)
+mongoose.connect("mongodb+srv://npgb:vGb0OBcA7BZ5P7ox@bookworm.ignoyto.mongodb.net/?")
 // mongoose.connect("mongodb://mongodb/")
     .then(() => {
         // Listen to port
