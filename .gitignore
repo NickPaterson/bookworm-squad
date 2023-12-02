@@ -132,3 +132,6 @@ dist
 
 # Local Netlify folder
 .netlify
+
+# Okteto
+okteto.yml
