@@ -2,7 +2,7 @@ version: "3.8"
 services:
   bookwormbackend:
     build: ./backend
-    image: bookwormarc.azurecr.io/oss/bitnami/redis:6.0.8
+    image: redis:6.0.8
     container_name: backendcontainer
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
@@ -16,7 +16,7 @@ services:
 
   bookwormfrontend:
     build: ./frontend
-    image: bookwormarc.azurecr.io/azuredocs/frontend:v1
+    image: frontend:v1
     container_name: frontendcontainer
     environment:
       REDIS: bookworm-backend
