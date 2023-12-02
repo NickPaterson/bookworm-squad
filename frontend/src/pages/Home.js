@@ -16,7 +16,8 @@ const Home = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch('/api/books');
+                // const response = await fetch('/api/books');
+                const response = await fetch('https://bookwormbackend-nickpaterson.cloud.okteto.net/api/books');
                 const json = await response.json();
 
                 if (response.ok) {

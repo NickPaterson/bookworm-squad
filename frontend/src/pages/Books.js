@@ -9,7 +9,8 @@ const Books = () => {
 
     useEffect(() => {
             const fetchBooks = async () => {
-                const res = await fetch('http://localhost:4000/api/books/');
+                //const res = await fetch('/api/books/');
+                const response = await fetch('https://bookwormbackend-nickpaterson.cloud.okteto.net/api/books');
                 const json = await res.json();
 
                 if (res.ok) {
