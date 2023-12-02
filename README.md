@@ -19,8 +19,17 @@ The `docker-compose.yml` file in the project directory contains the configuratio
 
 ### Running the Application
 
-Open a terminal, navigate to the project directory `bookworm-squad`, and run the following command:
+Open a terminal, navigate to the project directory, and run the following command:
+```bash
+cd bookworm-squad
+```
 
 ```bash
 docker-compose up
 ```
+
+Accessing the Services
+Once the services are up and running, you can access them at the following URLs:
+
+Frontend React App: [http://localhost:3000](http://localhost:3000)
+
