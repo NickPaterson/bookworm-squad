@@ -17,7 +17,7 @@ import {
     const src = `https://covers.openlibrary.org/b/isbn/${isbn_10}-M.jpg`;
 
     const handleDelete = async () => {
-      const response = await fetch(`https://bookwormbackend-nickpaterson.cloud.okteto.net//api/books/${book._id}`, {
+      const response = await fetch(`/api/books/${book._id}`, {
         method: 'DELETE',
       });
 
