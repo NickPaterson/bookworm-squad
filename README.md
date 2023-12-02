@@ -19,7 +19,7 @@ The `docker-compose.yml` file in the project directory contains the configuratio
 
 ### Running the Application
 
-Open a terminal, navigate to the project directory, and run the following command:
+Open a terminal, navigate to the project directory `bookworm-squad`, and run the following command:
 
 ```bash
 docker-compose up
