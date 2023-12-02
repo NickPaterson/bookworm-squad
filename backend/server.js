@@ -32,14 +32,14 @@ app.get("*", (req, res) => {
 });
 
 // Exit the application if MongoDB URI is not defined
-if (!process.env.MONGODB_URI) {
-    console.error('MONGODB_URI environment variable is not defined.');
-    process.exit(1); 
-}
+// if (!process.env.MONGODB_URI) {
+//     console.error('MONGODB_URI environment variable is not defined.');
+//     process.exit(1); 
+// }
 
 // Connect to MongoDB
 // $MONGODB_URI okteto environment variable
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(mongodb+srv://npgb:vGb0OBcA7BZ5P7ox@bookworm.ignoyto.mongodb.net/?)
 // mongoose.connect("mongodb://mongodb/")
     .then(() => {
         // Listen to port
