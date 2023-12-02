@@ -10,7 +10,7 @@ Make sure you have Docker and Docker Compose installed on your machine. Follow t
 Clone this repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/NickPaterson/bookworm-squad.git
 ```
 
 ### Configuration File
